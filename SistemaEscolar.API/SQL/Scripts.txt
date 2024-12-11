@@ -1,0 +1,25 @@
+﻿CREATE TABLE Funcionario (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Matricula NVARCHAR(50) NULL,
+    Nome NVARCHAR(100) NOT NULL,
+    CPF NVARCHAR(11) NOT NULL UNIQUE,
+    DataNascimento DATE NOT NULL,
+    Genero NVARCHAR(20) NULL,
+    Email NVARCHAR(100) NULL,
+    Telefone NVARCHAR(20) NULL,
+    Endereco NVARCHAR(200) NULL,
+    Cidade NVARCHAR(100) NULL,
+    Estado NVARCHAR(50) NULL,
+    CEP NVARCHAR(10) NULL,
+    Cargo NVARCHAR(50) NOT NULL,
+    Departamento NVARCHAR(50) NULL,
+    Salario DECIMAL(18, 2) NOT NULL,
+    DataAdmissao DATE NOT NULL,
+    Status NVARCHAR(20) NOT NULL DEFAULT 'Ativo', -- Valor padrão
+    PossuiPlanoSaude BIT NOT NULL DEFAULT 0,
+    PossuiValeTransporte BIT NOT NULL DEFAULT 0,
+    Escolaridade NVARCHAR(50) NULL,
+    DataCriacao DATETIME NOT NULL DEFAULT GETDATE(),
+    UltimaAtualizacao DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT CHK_Status CHECK (Status IN ('Ativo', 'Afastado', 'De Férias', 'Desligado', 'Suspenso', 'Treinamento', 'Transferido', 'Recrutamento'))
+);
